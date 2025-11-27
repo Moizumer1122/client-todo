@@ -15,8 +15,8 @@ const Add = () => {
             .then((res) => {
                 console.log('res', res);
             })
-            .catch((error)=>{
-console.log(error)
+            .catch((error) => {
+                console.log(error)
             })
     };
 
