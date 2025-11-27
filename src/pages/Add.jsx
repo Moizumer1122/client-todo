@@ -1,26 +1,52 @@
-import React from 'react'
-import { Input, Card, Form } from 'antd';
+import React, { useState } from 'react'
+import { Input, Card, Form, Button } from 'antd';
+import axios from 'axios';
 const Add = () => {
+    const initalData = { name: '', hobby: '', location: '' }
+    const [state, setState] = useState(initalData);
+    const handleChange = (e) => {
+        setState((s) => ({ ...s, [e.target.name]: e.target.value }));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(state);
+        axios.post('http://localhost:8000/', state)
+            .then((res) => {
+                console.log('res', res);
+            })
+            .catch((error)=>{
+console.log(error)
+            })
+    };
+
     return (
 
-        <div className="container mx-auto py-5 px-8 bg-[#a8dadc] min-h-screen bo">
-            <div className="flex justify-center items-center">
-                <Card className='w-100! h-135! shadow-lg' >
-                    <div className="my-5">
+        <div className="mx-auto py-5 px-8 bg-[#a8dadc] min-h-screen w-screen">
+            <div className="flex justify-center items-center mt-35">
+                <Card className='w-90! h-111! box-shadow' >
+                    <div className="my-8">
                         <h1 className='text-center text-3xl font-semibold'>Add Todo</h1>
 
-                        <div className='ml-20'>
-                            <div className='mt-20'>
-                                <Form layout='vertical'>
+                        <div className='ml-15'>
+                            <div className='mt-11'>
+                                <Form layout='vertical' onSubmitCapture={handleSubmit}>
                                     <Form.Item label='name' className='mb-1!'>
-                                        <Input size='large' placeholder="enter name" className='w-55!' />
+                                        <Input size='large' placeholder="enter name" className='w-50!' name='name' onChange={handleChange} value={state.name} />
                                     </Form.Item>
+
                                     <Form.Item label='Hobby' className='mb-1!'>
-                                        <Input size='large' placeholder="enter hobby" className=' w-55!' />
+                                        <Input size='large' placeholder="enter hobby" className='w-50!' name='hobby' onChange={handleChange} value={state.hobby} />
                                     </Form.Item>
-                                    <Form.Item label='Location' className='m-1!'>
-                                        <Input size='large' placeholder="enter hobby" className=' w-55!' />
+
+                                    <Form.Item label='Location' className='mb-1!'>
+                                        <Input size='large' placeholder="enter location" className='w-50!' name='location' onChange={handleChange} value={state.location} />
                                     </Form.Item>
+
+                                    <Form.Item>
+                                        <Button type="primary" className='ml-15! mt-5!' htmlType='submit'>Add todo</Button>
+                                    </Form.Item>
+
                                 </Form>
                             </div>
                         </div>
