@@ -4,14 +4,23 @@ import axios from 'axios';
 const Add = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [state, setState] = useState(initalData);
+    const URL = "http://localhost:8000"
+
     const handleChange = (e) => {
         setState((s) => ({ ...s, [e.target.name]: e.target.value }));
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(state);
-        axios.post('http://localhost:8000/', state)
+        let { name, hobby, location } = state;
+        name.trim();
+        hobby.trim();
+        location.trim();
+        if (name.length < 3) { return alert('more than 3 characters must'); }
+        if (hobby.length < 3) { return alert('more than 3 characters must'); }
+        if (location.length < 3) { return alert('more than 3 characters must'); }
+        let todo = { name, hobby, location };
+        axios.post(`${URL}/createTodo`,todo  )
             .then((res) => {
                 console.log('res', res);
             })
