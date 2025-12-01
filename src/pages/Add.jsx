@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input, Card, Form, Button } from 'antd';
 import axios from 'axios';
 const Add = () => {
@@ -13,21 +13,33 @@ const Add = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let { name, hobby, location } = state;
-        name.trim();
-        hobby.trim();
-        location.trim();
+        name = name.trim();
+        hobby = hobby.trim();
+        location = location.trim();
         if (name.length < 3) { return alert('more than 3 characters must'); }
         if (hobby.length < 3) { return alert('more than 3 characters must'); }
         if (location.length < 3) { return alert('more than 3 characters must'); }
         let todo = { name, hobby, location };
-        axios.post(`${URL}/createTodo`,todo  )
+        axios.post(`${URL}/createTodo`, todo)
             .then((res) => {
                 console.log('res', res);
+                setState(initalData);
             })
             .catch((error) => {
                 console.log(error)
             })
     };
+    useEffect(() => {
+        axios.get(`${URL}/readTodos`)
+            .then((res) => {
+                const {data}= res
+console.log(data)
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
 
     return (
 
