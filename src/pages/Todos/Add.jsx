@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Input, Card, Form, Button } from 'antd';
 import axios from 'axios';
 const Add = () => {
@@ -29,17 +29,6 @@ const Add = () => {
                 console.log(error)
             })
     };
-    useEffect(() => {
-        axios.get(`${URL}/readTodos`)
-            .then((res) => {
-                const {data}= res
-console.log(data)
-
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    }, [])
 
     return (
 
