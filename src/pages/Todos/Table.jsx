@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Input, Card, Form, Button } from 'antd';
 import axios from 'axios';
-const Table = () => {
+const index = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [documents, setDocuments] = useState([]);
     const URL = "http://localhost:8000"
@@ -20,15 +20,15 @@ const Table = () => {
     }, [])
 
     return (
-   
-       <div className="mx-auto py-20 px-8 bg-[#a8dadc]">
-    <div className="flex justify-center items-center mt-20">
+<div className="px-8 bg-[#a8dadc] min-h-[500px] w-full">
+    <div className="flex justify-center items-center py-4">
         <h1 className="text-center text-3xl font-semibold">Todos</h1>
     </div>
 </div>
 
 
+
     )
 }
 
-export default Table
+export default index

@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <div>
         <Add/>
-      <Table/>
+      {/* <Table/> */}
     </div>
   )
 }

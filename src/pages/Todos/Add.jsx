@@ -32,8 +32,8 @@ const Add = () => {
 
     return (
 
-        <div className="mx-auto py-5 px-8 bg-[#a8dadc] min-h-screen w-screen">
-            <div className="flex justify-center items-center mt-35">
+        <div className="mx-auto py-20 px-8 bg-[#a8dadc]  min-h-[91.3vh] w-full ">
+            <div className="flex justify-center items-center">
                 <Card className='w-90! h-111! box-shadow' >
                     <div className="my-8">
                         <h1 className='text-center text-3xl font-semibold'>Add Todo</h1>
