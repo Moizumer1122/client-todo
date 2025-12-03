@@ -5,20 +5,20 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-teal-100 shadow-lg h-16 flex items-center p-4">
+    <nav className="bg-navbar shadow-lg h-16 flex items-center p-4">
       <div className="flex justify-between items-center">
 
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-gray-800 hover:scale-105 transition">
+        <Link to="/" className="text-xl font-bold text-black! hover:scale-105 transition">
           TodoApp
         </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-5 ml-15">
-          <Link to="/" className="text-gray-700 hover:text-blue-600 px-2 py-1 transition hover:scale-105">Home</Link>
-          <Link to="/todos" className="text-gray-700 hover:text-blue-600 px-2 py-1 transition hover:scale-105">Todos</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-blue-600 px-2 py-1 transition hover:scale-105">Contact</Link>
-          <Link to="/about" className="text-gray-700 hover:text-blue-600 px-2 py-1 transition hover:scale-105">About</Link>
+          <Link to="/" className="text-white! hover:text-blue-600 px-2 py-1 transition hover:scale-105">Home</Link>
+          <Link to="/todos" className="text-white! hover:text-blue-600 px-2 py-1 transition hover:scale-105">Todos</Link>
+          <Link to="/contact" className="text-white! hover:text-blue-600 px-2 py-1 transition hover:scale-105">Contact</Link>
+          <Link to="/about" className="text-white! hover:text-blue-600 px-2 py-1 transition hover:scale-105">About</Link>
         </div>
 
         {/* Mobile Menu Button */}

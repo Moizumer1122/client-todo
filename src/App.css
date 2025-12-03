@@ -2,3 +2,6 @@
 .box-shadow{
 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.bg-navbar{
+    background-color:#00b4d8;
+}
