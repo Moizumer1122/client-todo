@@ -16,9 +16,7 @@ const Add = () => {
         name = name.trim();
         hobby = hobby.trim();
         location = location.trim();
-        if (name.length < 3) { return alert('more than 3 characters must'); }
-        if (hobby.length < 3) { return alert('more than 3 characters must'); }
-        if (location.length < 3) { return alert('more than 3 characters must'); }
+
         let todo = { name, hobby, location };
         axios.post(`${URL}/createTodo`, todo)
             .then((res) => {
@@ -34,30 +32,87 @@ const Add = () => {
 
         <div className="mx-auto py-20 px-8 bg-[#a8dadc]  min-h-[91.3vh] w-full ">
             <div className="flex justify-center items-center">
-                <Card className='w-90! h-111! box-shadow' >
+                <Card className='w-85! h-120! box-shadow' >
                     <div className="my-8">
                         <h1 className='text-center text-3xl font-semibold'>Add Todo</h1>
 
-                        <div className='ml-15'>
+                        <div className='ml-5'>
                             <div className='mt-11'>
-                                <Form layout='vertical' onSubmitCapture={handleSubmit}>
-                                    <Form.Item label='name' className='mb-1!'>
-                                        <Input size='large' placeholder="enter name" className='w-50!' name='name' onChange={handleChange} value={state.name} />
+                                {/* <Form layout='vertical' onSubmitCapture={handleSubmit} >
+                                    <Form.Item label='name' className='mb-1!'name='name' rules={[{ required: true, message: 'Please enter your name' }]} >
+                                        <Input size='large' placeholder="enter name" className='w-50!'  onChange={handleChange} value={state.name} />
                                     </Form.Item>
 
-                                    <Form.Item label='Hobby' className='mb-1!'>
-                                        <Input size='large' placeholder="enter hobby" className='w-50!' name='hobby' onChange={handleChange} value={state.hobby} />
+                                    <Form.Item label='Hobby' className='mb-1!' name='hobby' rules={[{ required: true, message: 'Please enter your hobby' }]}>
+                                        <Input size='large' placeholder="enter hobby" className='w-50!'  onChange={handleChange} value={state.hobby} />
                                     </Form.Item>
 
-                                    <Form.Item label='Location' className='mb-1!'>
-                                        <Input size='large' placeholder="enter location" className='w-50!' name='location' onChange={handleChange} value={state.location} />
+                                    <Form.Item label='Location' className='mb-1!' name='location' rules={[{ required: true, message: 'Please enter your location' }]}>
+                                        <Input size='large' placeholder="enter location" className='w-50!'  onChange={handleChange} value={state.location} />
                                     </Form.Item>
 
                                     <Form.Item>
                                         <Button type="primary" className='ml-15! mt-5!' htmlType='submit'>Add todo</Button>
                                     </Form.Item>
 
-                                </Form>
+                                </Form> */}
+                                         <Form 
+                                layout='vertical' 
+                                onSubmitCapture={handleSubmit}  // ⭐ traditional submit
+                            >
+
+                                <Form.Item
+                                    label="Name"
+                                    name="name"
+                                    rules={[{ required: true, message: 'Please enter your name' }]}
+                                >
+                                    <Input 
+                                        name='name'
+                                        size='large'
+                                        placeholder="Enter name"
+                                        value={state.name}
+                                        onChange={handleChange}
+                                    />
+                                </Form.Item>
+
+                                <Form.Item
+                                    label="Hobby"
+                                    name="hobby"
+                                    rules={[{ required: true, message: 'Please enter your hobby' }]}
+                                >
+                                    <Input
+                                        name='hobby'
+                                        size='large'
+                                        placeholder="Enter hobby"
+                                        value={state.hobby}
+                                        onChange={handleChange}
+                                    />
+                                </Form.Item>
+
+                                <Form.Item
+                                    label="Location"
+                                    name="location"
+                                    rules={[{ required: true, message: 'Please enter your location' }]}
+                                >
+                                    <Input
+                                        name='location'
+                                        size='large'
+                                        placeholder="Enter location"
+                                        value={state.location}
+                                        onChange={handleChange}
+                                    />
+                                </Form.Item>
+
+                                <Form.Item>
+                                    <Button className='ml-20! mt-4!'
+                                        type="primary" 
+                                        htmlType="submit" // triggers your handleSubmit
+                                    >
+                                        Add Todo
+                                    </Button>
+                                </Form.Item>
+
+                            </Form>
                             </div>
                         </div>
 

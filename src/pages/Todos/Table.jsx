@@ -45,15 +45,20 @@ const index = () => {
     useEffect(() => {
         axios.get(`${URL}/readTodos`)
             .then((res) => {
-                const { data } = res
-                setDocuments(data)
-                console.log(data)
+                const { data } = res;
+                const dataWithKey = data.map((item, index) => ({
+                    ...item,
+                    key: item.id || index
+                }));
 
+                setDocuments(dataWithKey);
+                console.log(dataWithKey);
             })
             .catch((error) => {
-                console.log(error)
-            })
-    }, [])
+                console.log(error);
+            });
+    }, []);
+
     const handleEdit = () => {
         console.log('your data has been edited')
     }
@@ -65,7 +70,7 @@ const index = () => {
         <div className="px-8 bg-[#a8dadc] min-h-[672px] w-full">
             <div className="flex justify-center items-center py-4">
                 <div className="overflow-hidden rounded-lg shadow-lg w-full max-w-3xl bg-white">
-                    <Table columns={columns} dataSource={documents} pagination={{ pageSize: pageSize, onChange: (page) => setCurrentPage(page) }} bordered/>
+                    <Table columns={columns} dataSource={documents} pagination={{ pageSize: pageSize, onChange: (page) => setCurrentPage(page) }} bordered />
                 </div>
             </div>
         </div>
