@@ -6,17 +6,17 @@ notification.config({
 });
 
 const notify = {
-  success(message, description) {
-    notification.success({ message, description });
+  success(title, description) {
+    notification.success({ title, description });
   },
-  error(message, description) {
-    notification.error({ message, description });
+  error(title, description) {
+    notification.error({ title, description });
   },
-  warning(message, description) {
-    notification.warning({ message, description });
+  warning(title, description) {
+    notification.warning({ title, description });
   },
-  info(message, description) {
-    notification.info({ message, description });
+  info(title, description) {
+    notification.info({ title, description });
   },
 };
 window.notify = notify;

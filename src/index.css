@@ -1,0 +1,6 @@
+/* src/components/Loader.css */
+.loader-container i {
+  background-color: blue !important;
+  height:50px;
+  width:50px;
+}

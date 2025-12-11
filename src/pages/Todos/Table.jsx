@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Input, Card, Form, Button, Space, Table, Tag } from 'antd';
 import axios from 'axios';
+import ScreenLoader from '../../components/ScreenLoader'
 const index = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [documents, setDocuments] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+        const [loading, setLoading] = useState(true); 
     const URL = "http://localhost:8000"
 
     const columns = [
@@ -56,8 +58,14 @@ const index = () => {
             })
             .catch((error) => {
                 console.log(error);
+            })
+              .finally(() => {
+                setLoading(false); 
             });
     }, []);
+      if (loading) {
+        return <ScreenLoader />; // Show loader while fetching data
+    }
 
     const handleEdit = () => {
         console.log('your data has been edited')
