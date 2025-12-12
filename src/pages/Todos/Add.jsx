@@ -6,7 +6,7 @@ const Add = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [isProcessing, setIsProccessing] = useState(false)
     const [state, setState] = useState(initalData);
-    const URL = "http://localhost:8000"
+    const URL = "https://server-git-main-moizdevs-projects.vercel.app"
     const { Item } = Form;
     const handleChange = (e) => {
         setState((s) => ({ ...s, [e.target.name]: e.target.value }));
