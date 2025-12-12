@@ -21,7 +21,7 @@ const index = () => {
 
         },
         {
-            title: 'Name',
+            title: 'NameE',
             dataIndex: 'name',
             key: 'name',
         },
