@@ -6,7 +6,7 @@ const index = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [documents, setDocuments] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-        const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
     const URL = "http://localhost:8000"
 
     const columns = [
@@ -37,8 +37,8 @@ const index = () => {
             key: 'action',
             render: (_, record) => (
                 <Space size="middle">
-                    <button onClick={() => console.log('Edit', record.name)} className="px-3 py-1 bg-green-500 text-white font-medium rounded hover:bg-green-600 transition"> Edit </button>
-                    <button onClick={() => console.log('Delete', record.name)} className="px-3 py-1 bg-red-500 text-white font-medium rounded hover:bg-red-600 transition">Delete </button>
+                    <button onClick={()=> handleEdit(record)} className="px-3 py-1 bg-green-500 text-white font-medium rounded hover:bg-green-600 transition"> Edit </button>
+                    <button onClick={handleDelete} className="px-3 py-1 bg-red-500 text-white font-medium rounded hover:bg-red-600 transition">Delete </button>
                 </Space>
             ),
         },
@@ -59,16 +59,25 @@ const index = () => {
             .catch((error) => {
                 console.log(error);
             })
-              .finally(() => {
-                setLoading(false); 
+            .finally(() => {
+                setLoading(false);
             });
     }, []);
-      if (loading) {
+    if (loading) {
         return <ScreenLoader />; // Show loader while fetching data
     }
 
-    const handleEdit = () => {
-        console.log('your data has been edited')
+    const handleEdit = (record) => {
+        const todo = { id:record.id, name: record.name, hobby: record.hobby, location: record.location };
+        axios.post(`${URL}/updateTodo`, todo)
+            .then((res) => {
+                console.log('res', res);
+                // notify.success('Success', 'your todo has been edited')
+            })
+            .catch((error) => {
+                // notify.error('Error', 'your todo has not edited due to technical issue')
+                console.log(error)
+            })
     }
     const handleDelete = () => {
         console.log('your data has been deleted')
