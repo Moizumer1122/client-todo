@@ -6,7 +6,7 @@ const Add = () => {
     const initalData = { name: '', hobby: '', location: '' }
     const [isProcessing, setIsProccessing] = useState(false)
     const [state, setState] = useState(initalData);
-    const URL = "https://server-git-main-moizdevs-projects.vercel.app"
+    const URL = "https://server-yhn9.vercel.app"
     const { Item } = Form;
     const handleChange = (e) => {
         setState((s) => ({ ...s, [e.target.name]: e.target.value }));
@@ -77,28 +77,31 @@ const Add = () => {
                                             placeholder="Enter name"
                                             value={state.name}
                                             onChange={handleChange}
-                                        />
+                                            required
+                                            />
                                     </Item>
 
                                     <Item
                                         label="Hobby"
                                         rules={[{ required: true, message: 'Please enter your hobby' }]}
-                                    >
+                                        >
                                         <Input
-                                            name='hobby'
-                                            size='large'
+                                        required
+                                        name='hobby'
+                                        size='large'
                                             placeholder="Enter hobby"
                                             value={state.hobby}
                                             onChange={handleChange}
-                                        />
+                                            />
                                     </Item>
 
                                     <Item
                                         label="Location"
                                         rules={[{ required: true, message: 'Please enter your location' }]}
-                                    >
+                                        >
                                         <Input
                                             name='location'
+                                            required
                                             size='large'
                                             placeholder="Enter location"
                                             value={state.location}
